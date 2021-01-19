@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NUMAD21S-CZL</string>
+    <string name="about_string">About</string>
+    <string name="clear_string">Clear</string>
 </resources>
