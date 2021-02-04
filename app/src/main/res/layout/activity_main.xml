@@ -80,6 +80,7 @@
         android:layout_height="63dp"
         android:backgroundTint="#931818"
         android:fontFamily="sans-serif-black"
+        android:onClick="activityButtons"
         android:text="@string/tap_me_string"
         android:textSize="18sp"
         android:typeface="monospace"
