@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_click_letters">
+
+    <Button
+        android:id="@+id/btn_c"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:onClick="displayLetterClicked"
+        android:text="@string/c_string"
+        app:layout_constraintBottom_toTopOf="@+id/btn_f"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_b"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/btn_pressed_textview"
+        android:layout_width="320dp"
+        android:layout_height="67dp"
+        android:freezesText="true"
+        android:text="@string/pressed_none_string"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.71" />
+
+    <Button
+        android:id="@+id/btn_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="displayLetterClicked"
+        android:text="@string/a_string"
+        app:layout_constraintBottom_toTopOf="@+id/btn_d"
+        app:layout_constraintEnd_toStartOf="@+id/btn_b"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="displayLetterClicked"
+        android:text="@string/b_string"
+        app:layout_constraintBottom_toTopOf="@+id/btn_e"
+        app:layout_constraintEnd_toStartOf="@+id/btn_c"
+        app:layout_constraintStart_toEndOf="@+id/btn_a"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="displayLetterClicked"
+        android:text="@string/d_string"
+        app:layout_constraintBottom_toTopOf="@+id/btn_pressed_textview"
+        app:layout_constraintEnd_toStartOf="@+id/btn_e"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_a" />
+
+    <Button
+        android:id="@+id/btn_e"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="displayLetterClicked"
+        android:text="@string/e_string"
+        app:layout_constraintBottom_toTopOf="@+id/btn_pressed_textview"
+        app:layout_constraintEnd_toStartOf="@+id/btn_f"
+        app:layout_constraintStart_toEndOf="@+id/btn_d"
+        app:layout_constraintTop_toBottomOf="@+id/btn_b" />
+
+    <Button
+        android:id="@+id/btn_f"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="displayLetterClicked"
+        android:text="@string/f_string"
+        app:layout_constraintBottom_toTopOf="@+id/btn_pressed_textview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_e"
+        app:layout_constraintTop_toBottomOf="@+id/btn_c" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.example.numad21s_czl;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -30,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
         }
         nameTextView.setText(name);
         emailTextView.setText(email);
+    }
 
+    public void activityButtons(View view) {
+        switch(view.getId()) {
+            case R.id.activity_click_btn:
+                Intent clickActivity = new Intent(this, activity_click_letters.class);
+                startActivity(clickActivity);
+        }
     }
 }
