@@ -10,4 +10,5 @@
     <string name="e_string">E</string>
     <string name="f_string">F</string>
     <string name="pressed_none_string">Pressed: None!</string>
+    <string name="link_collector_string">Link Collector</string>
 </resources>
