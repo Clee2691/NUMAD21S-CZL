@@ -22,7 +22,7 @@ public class LinkRecyclerViewHolder extends RecyclerView.ViewHolder {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int position = getAdapterPosition();
+                //int position = getAdapterPosition();
                 Uri uri = Uri.parse((String) linkTarget.getText());
                 view.getContext().startActivity(new Intent(Intent.ACTION_VIEW, uri));
             }

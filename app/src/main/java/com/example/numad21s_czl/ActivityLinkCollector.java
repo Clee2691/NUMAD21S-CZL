@@ -13,15 +13,13 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.view.View;
+
 import com.google.android.material.snackbar.Snackbar;
 
 public class ActivityLinkCollector extends AppCompatActivity
         implements EnterLinkDialogFragment.addLinkListener {
     private ArrayList<LinkCardView> cardListArray = new ArrayList<>();
     private ArrayList<String> cardUUIDs;
-
-    private static final String STATE_CARD = "cardItem";
-    private static final String NUM_ITEMS = "numItems";
 
     // Recycler view setup
     private RecyclerView recyclerView;
@@ -58,7 +56,7 @@ public class ActivityLinkCollector extends AppCompatActivity
     private void restoreData(Bundle savedInstanceState) {
         ArrayList<String> cardIDs = savedInstanceState.getStringArrayList("cardUUIDArray");
         if (cardListArray.size() == 0 || cardListArray == null) {
-            for (String cardUUID: cardIDs) {
+            for (String cardUUID : cardIDs) {
                 int cardImage = savedInstanceState.getInt(cardUUID + "_linkImage");
                 String cardName = savedInstanceState.getString(cardUUID + "_linkName");
                 String cardTarget = savedInstanceState.getString(cardUUID + "_linkTarget");
@@ -88,6 +86,7 @@ public class ActivityLinkCollector extends AppCompatActivity
             public boolean onMove(RecyclerView rview, RecyclerView.ViewHolder rViewHolder, RecyclerView.ViewHolder target) {
                 return false;
             }
+
             @Override
             public void onSwiped(RecyclerView.ViewHolder vHolder, int direction) {
                 View v = findViewById(R.id.link_collect_activity);
@@ -97,6 +96,7 @@ public class ActivityLinkCollector extends AppCompatActivity
         });
         swipeCard.attachToRecyclerView(recyclerView);
     }
+
     public void deleteOnSwipe(View v, int pos) {
         LinkCardView deletedItem = cardListArray.get(pos);
         cardListArray.remove(pos);
@@ -112,12 +112,13 @@ public class ActivityLinkCollector extends AppCompatActivity
         }).show();
 
     }
+
     @Override
     public void addCard(String linkName, String linkTarget) {
         int pos = 0;
         View view = findViewById(R.id.link_collect_activity);
         // Strip whitespace from entered link
-        String cleanTarget = linkTarget.replaceAll("\\s+", "");
+        String cleanTarget = linkTarget.replaceAll("\\s+", "").toLowerCase();
 
         // Preemptively add https to link
         if ((!cleanTarget.contains("http")) && (!cleanTarget.contains("https"))) {
@@ -132,8 +133,20 @@ public class ActivityLinkCollector extends AppCompatActivity
         }
 
         if (validURL) {
+            int icon;
+            if (cleanTarget.contains("gmail")) {
+                icon = R.drawable.ic_gmail_icon;
+            } else if (cleanTarget.contains("google")) {
+                icon = R.drawable.ic_google_icon;
+            } else if (cleanTarget.contains("linkedin")) {
+                icon = R.drawable.ic_linkedin_icon;
+            } else if (cleanTarget.contains("youtube")) {
+                icon = R.drawable.ic_youtube_icon;
+            } else {
+                icon = R.drawable.ic_default_icon;
+            }
             cardListArray.add(pos,
-                    new LinkCardView(R.drawable.ic_launcher_czl_background,
+                    new LinkCardView(icon,
                             linkName, cleanTarget));
 
             lRAdapter.notifyItemInserted(pos);
