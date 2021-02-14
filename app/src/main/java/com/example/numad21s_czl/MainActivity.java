@@ -34,10 +34,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void activityButtons(View view) {
-        switch(view.getId()) {
-            case R.id.activity_click_btn:
-                Intent clickActivity = new Intent(this, activity_click_letters.class);
-                startActivity(clickActivity);
+        int currResource = view.getId();
+        if (currResource == R.id.activity_click_btn) {
+            Intent clickActivity = new Intent(this, ActivityClickLetters.class);
+            startActivity(clickActivity);
+        } else if (currResource == R.id.btn_link_collector) {
+            Intent link_collect_activity = new Intent(this, ActivityLinkCollector.class);
+            startActivity(link_collect_activity);
         }
     }
 }

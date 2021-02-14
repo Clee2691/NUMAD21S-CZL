@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 
-public class activity_click_letters extends AppCompatActivity {
+public class ActivityClickLetters extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
