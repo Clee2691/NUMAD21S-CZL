@@ -15,4 +15,6 @@
     <string name="button_to_add_links_string">button to add links</string>
     <string name="add_link_string">Add</string>
     <string name="cancel">Cancel</string>
+    <string name="https_string">https://</string>
+    <string name="enter_site_name_string">Enter Site Name</string>
 </resources>

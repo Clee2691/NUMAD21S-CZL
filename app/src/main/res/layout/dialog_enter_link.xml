@@ -11,8 +11,9 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
         android:ems="10"
+        android:hint="@string/enter_site_name_string"
         android:inputType="text"
-        android:text="Name" />
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editTextLinkTarget"
@@ -21,7 +22,9 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="10dp"
+        android:autofillHints=""
         android:ems="10"
+        android:hint="http://"
         android:inputType="textUri"
-        android:text="https://" />
+        android:text="@string/https_string" />
 </LinearLayout>

@@ -6,6 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:id="@+id/link_card_view"
+    android:foreground="?selectableItemBackground"
+    android:clickable="true"
     app:cardBackgroundColor="#FFFFFF"
     app:cardCornerRadius="16dp"
     app:cardElevation="3dp"

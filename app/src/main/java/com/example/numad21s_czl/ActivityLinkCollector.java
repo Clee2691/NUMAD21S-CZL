@@ -3,22 +3,20 @@ package com.example.numad21s_czl;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Array;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-public class ActivityLinkCollector extends AppCompatActivity {
+public class ActivityLinkCollector extends AppCompatActivity
+        implements EnterLinkDialogFragment.addLinkListener {
     private ArrayList<LinkCardView> cardListArray = new ArrayList<>();
     private ArrayList<String> cardUUIDs;
 
@@ -74,8 +72,6 @@ public class ActivityLinkCollector extends AppCompatActivity {
         if (view.getId() == R.id.btn_float_add_link) {
             DialogFragment addLinkDialog = new EnterLinkDialogFragment();
             addLinkDialog.show(getSupportFragmentManager(), "addLink");
-            int pos = 0;
-            addCard(pos);
         }
     }
 
@@ -86,14 +82,76 @@ public class ActivityLinkCollector extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(lRAdapter);
         recyclerView.setLayoutManager(rvLayoutManager);
+
+        ItemTouchHelper swipeCard = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(RecyclerView rview, RecyclerView.ViewHolder rViewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder vHolder, int direction) {
+                View v = findViewById(R.id.link_collect_activity);
+                int pos = vHolder.getLayoutPosition();
+                deleteOnSwipe(v, pos);
+            }
+        });
+        swipeCard.attachToRecyclerView(recyclerView);
+    }
+    public void deleteOnSwipe(View v, int pos) {
+        LinkCardView deletedItem = cardListArray.get(pos);
+        cardListArray.remove(pos);
+        lRAdapter.notifyItemRemoved(pos);
+
+        Snackbar.make(v, "Deleted Item", Snackbar.LENGTH_SHORT).setAction("Undo", new View.OnClickListener() {
+            @Override
+            // Allow undo delete of item
+            public void onClick(View v) {
+                cardListArray.add(pos, deletedItem);
+                lRAdapter.notifyItemInserted(pos);
+            }
+        }).show();
+
+    }
+    @Override
+    public void addCard(String linkName, String linkTarget) {
+        int pos = 0;
+        View view = findViewById(R.id.link_collect_activity);
+        // Strip whitespace from entered link
+        String cleanTarget = linkTarget.replaceAll("\\s+", "");
+
+        // Preemptively add https to link
+        if ((!cleanTarget.contains("http")) && (!cleanTarget.contains("https"))) {
+            cleanTarget = "https://" + cleanTarget;
+        }
+
+        boolean validURL;
+        try {
+            validURL = assessURL(cleanTarget);
+        } catch (MalformedURLException mE) {
+            validURL = false;
+        }
+
+        if (validURL) {
+            cardListArray.add(pos,
+                    new LinkCardView(R.drawable.ic_launcher_czl_background,
+                            linkName, cleanTarget));
+
+            lRAdapter.notifyItemInserted(pos);
+            Snackbar.make(view, String.format("%s created!", linkName),
+                    Snackbar.LENGTH_SHORT).show();
+        } else {
+            Snackbar.make(view,
+                    "Link not added. Invalid format. It must have a domain (.com, .net, etc.)",
+                    Snackbar.LENGTH_SHORT).show();
+        }
     }
 
-    public void addCard(int pos) {
-        cardListArray.add(pos,
-                new LinkCardView(R.drawable.ic_launcher_czl_background,
-                        "Test 1", "google.com"));
-
-        lRAdapter.notifyItemInserted(pos);
+    private boolean assessURL(@NonNull String cardUrl) throws MalformedURLException {
+        URL parsedURL = new URL(cardUrl);
+        // Crude way of checking if link contains a domain or not
+        if (parsedURL.getHost().contains(".")) {
+            return true;
+        }
+        return false;
     }
-
 }
