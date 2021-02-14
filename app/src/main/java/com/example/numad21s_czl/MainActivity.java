@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
     public void activityButtons(View view) {
         int currResource = view.getId();
         if (currResource == R.id.activity_click_btn) {
-            Intent clickActivity = new Intent(this, activity_click_letters.class);
+            Intent clickActivity = new Intent(this, ActivityClickLetters.class);
             startActivity(clickActivity);
         } else if (currResource == R.id.btn_link_collector) {
-            Intent link_collect_activity = new Intent(this, activity_link_collector.class);
+            Intent link_collect_activity = new Intent(this, ActivityLinkCollector.class);
             startActivity(link_collect_activity);
         }
     }

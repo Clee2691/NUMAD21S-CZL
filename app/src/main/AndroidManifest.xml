@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_czl_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD21SCZL">
-        <activity android:name=".activity_link_collector"></activity>
-        <activity android:name=".activity_click_letters" />
+        <activity android:name=".ActivityLinkCollector"></activity>
+        <activity android:name=".ActivityClickLetters" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
