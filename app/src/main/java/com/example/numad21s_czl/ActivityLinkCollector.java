@@ -2,12 +2,15 @@ package com.example.numad21s_czl;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -69,6 +72,8 @@ public class ActivityLinkCollector extends AppCompatActivity {
 
     public void clickedAddLink(View view) {
         if (view.getId() == R.id.btn_float_add_link) {
+            DialogFragment addLinkDialog = new EnterLinkDialogFragment();
+            addLinkDialog.show(getSupportFragmentManager(), "addLink");
             int pos = 0;
             addCard(pos);
         }

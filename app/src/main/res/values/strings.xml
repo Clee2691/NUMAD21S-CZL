@@ -13,4 +13,6 @@
     <string name="link_collector_string">Link Collector</string>
     <string name="add_links_string">add_links</string>
     <string name="button_to_add_links_string">button to add links</string>
+    <string name="add_link_string">Add</string>
+    <string name="cancel">Cancel</string>
 </resources>
