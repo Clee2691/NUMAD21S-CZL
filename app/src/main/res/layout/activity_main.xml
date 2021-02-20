@@ -116,6 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#1976D2"
+        android:onClick="activityButtons"
         android:text="@string/locator_string"
         app:layout_constraintEnd_toStartOf="@+id/btn_link_collector"
         app:layout_constraintStart_toEndOf="@+id/activity_click_btn"
