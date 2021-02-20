@@ -41,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
         } else if (currResource == R.id.btn_link_collector) {
             Intent link_collect_activity = new Intent(this, ActivityLinkCollector.class);
             startActivity(link_collect_activity);
+        } else if (currResource == R.id.btn_locate_activity) {
+            Intent locator_activity = new Intent(this, ActivityLocator.class);
+            startActivity(locator_activity);
         }
     }
 }
