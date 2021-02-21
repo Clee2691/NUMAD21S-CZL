@@ -17,4 +17,8 @@
     <string name="cancel">Cancel</string>
     <string name="https_string">https://</string>
     <string name="enter_site_name_string">Enter Site Name</string>
+    <string name="locator_string">Locator</string>
+    <string name="current_longitude_string">Current Longitude</string>
+    <string name="current_latitude_string">Current Latitude</string>
+    <string name="locate_me_string">Locate me!</string>
 </resources>
