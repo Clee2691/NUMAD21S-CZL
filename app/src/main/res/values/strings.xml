@@ -21,4 +21,5 @@
     <string name="current_longitude_string">Current Longitude</string>
     <string name="current_latitude_string">Current Latitude</string>
     <string name="locate_me_string">Locate me!</string>
+    <string name="github_lookup_string">GitHub LookUp</string>
 </resources>

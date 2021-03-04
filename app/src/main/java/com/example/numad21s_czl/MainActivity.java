@@ -44,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         } else if (currResource == R.id.btn_locate_activity) {
             Intent locator_activity = new Intent(this, ActivityLocator.class);
             startActivity(locator_activity);
+        } else if (currResource == R.id.btn_github) {
+            Intent github_activity = new Intent(this, ActivityGithub.class);
+            startActivity(github_activity);
         }
     }
 }

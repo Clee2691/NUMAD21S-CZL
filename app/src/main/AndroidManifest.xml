@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.numad21s_czl">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_czl_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD21SCZL">
-        <activity android:name=".ActivityLocator"></activity>
+        <activity android:name=".ActivityGithub"></activity>
+        <activity android:name=".ActivityLocator" />
         <activity android:name=".ActivityLinkCollector" />
         <activity android:name=".ActivityClickLetters" />
         <activity android:name=".MainActivity">
