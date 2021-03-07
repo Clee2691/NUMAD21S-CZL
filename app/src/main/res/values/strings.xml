@@ -21,4 +21,13 @@
     <string name="current_longitude_string">Current Longitude</string>
     <string name="current_latitude_string">Current Latitude</string>
     <string name="locate_me_string">Locate me!</string>
+    <string name="github_lookup_string">GitHub LookUp</string>
+    <string name="enter_a_github_username_string">Enter a github username</string>
+    <string name="find_user_string">Find User</string>
+    <string name="enter_github_username_string">Enter Github Username!</string>
+    <string name="email_string">Email:</string>
+    <string name="public_repos_string"># Public Repos:</string>
+    <string name="date_created_string">Date Created:</string>
+    <string name="name_string">Name:</string>
+    <string name="github_url_string">Github Url:</string>
 </resources>
