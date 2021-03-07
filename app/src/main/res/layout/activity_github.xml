@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/github_Activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ActivityGithub">
@@ -10,9 +11,13 @@
         android:id="@+id/textViewUserEmailOutput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:autoLink="email"
+        android:freezesText="true"
+        android:textSize="18sp"
+        app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toTopOf="@+id/textViewGHUrlOutput"
-        app:layout_constraintEnd_toEndOf="@+id/textViewGHUrlOutput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/textViewNameOutput" />
 
     <TextView
@@ -20,8 +25,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:freezesText="true"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/textViewUserEmailOutput"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toTopOf="@+id/textViewName" />
 
     <TextView
@@ -30,29 +36,35 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:freezesText="true"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textViewDateCreated"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/textViewPublicReposOutput" />
 
     <TextView
         android:id="@+id/textViewGHUrlOutput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:autoLink="web"
+        android:ellipsize="none"
+        android:freezesText="true"
+        android:textSize="18sp"
+        app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toTopOf="@+id/textViewPublicReposOutput"
-        app:layout_constraintEnd_toEndOf="@+id/textViewPublicReposOutput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/textViewUserEmailOutput" />
 
     <TextView
         android:id="@+id/textViewPublicReposOutput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:freezesText="true"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewDateCreatedOutput"
-        app:layout_constraintEnd_toEndOf="@+id/textViewDateCreatedOutput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/textViewGHUrlOutput" />
 
     <EditText
@@ -77,6 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:onClick="fetchData"
         android:text="Find User"
         app:layout_constraintBottom_toBottomOf="@+id/editTextUserName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,18 +110,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUserName"
-        tools:srcCompat="@tools:sample/avatars" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
@@ -120,6 +121,7 @@
         android:id="@+id/textViewGHUrl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:singleLine="false"
         android:text="Github Url:"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewPublicRepos"
@@ -135,7 +137,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewUserEmail"
         app:layout_constraintStart_toStartOf="@+id/textViewUserEmail"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <TextView
         android:id="@+id/textViewUserEmail"
@@ -171,5 +173,21 @@
         app:layout_constraintBottom_toTopOf="@+id/textViewDateCreated"
         app:layout_constraintStart_toStartOf="@+id/textViewDateCreated"
         app:layout_constraintTop_toBottomOf="@+id/textViewGHUrl" />
+
+    <TextView
+        android:id="@+id/textViewStatusIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textViewName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="218dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
